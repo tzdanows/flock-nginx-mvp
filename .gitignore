@@ -1,0 +1,86 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+
+# Node.js (Next.js)
+node_modules/
+.next/
+out/
+dist/
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+*.env
+yarn.lock
+package-lock.json
+.nyc_output/
+coverage/
+.vscode/
+.idea/
+*.iml
+
+# Go
+*.exe
+*.test
+*.out
+*.log
+*.mod
+*.sum
+vendor/
+bin/
+pkg/
+coverage.out
+debug/
+
+# Kubernetes
+*.yaml
+*.yml
+*.log
+kustomization.yaml
+/.kube/
+secrets/  # Custom directory for secrets
+certs/
+helm-charts/
+!kustomization.yaml  # Include the root kustomization.yaml
+.kubeconfig
+
+# NGINX
+logs/
+conf.d/*
+!conf.d/default.conf
+certs/
+*.crt
+*.key
+nginx.conf
+
+# ConnectRPC
+*.pb.go
+*.pb.gw.go
+*.proto-gen/
+gen/
+client/
+server/
+
+# General IDE/Editor
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Miscellaneous
+.envrc
+.env.bak
+*.bak
+*.tmp
+*.lock
+*.pid
