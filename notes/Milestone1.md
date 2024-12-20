@@ -4,21 +4,13 @@ Milestone one involves creating a simple ConnectRPC client-server
 
 ## Running the backend locally
 
-1. Generate the protocol buffer code:
 ```bash
-buf generate
-```
-
-2. Start the server:
-```bash
+cd backend
 go run cmd/server/main.go
-```
-You should see: `Starting server on :8080...`
-
-3. In another terminal, run the client:
-```bash
+# in another terminal
 go run cmd/client/main.go
 ```
+
 You should see a response like:
 ```
 Server Response: Server received: Hello from client!
