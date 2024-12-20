@@ -2,10 +2,18 @@ import PingButton from '@/components/PingButton'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
-        <PingButton />
-      </div>
-    </main>
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <h1 className="text-xl font-semibold text-gray-900">Ping Service</h1>
+        </div>
+      </header>
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-white shadow-sm rounded-lg border border-gray-200 p-6">
+          <PingButton />
+        </div>
+      </main>
+    </div>
   )
 }
+

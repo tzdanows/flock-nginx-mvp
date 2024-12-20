@@ -2,7 +2,7 @@
 
 learning about nginx ingress and frontend/backend integration in kubernetes, primarily for [Flock](https://github.com/flock-eng/flock)
 
-![alt text](/notes/image.png)
+![nginx](/notes/nginxDiagram.png)
 
 ### Milestones:
 

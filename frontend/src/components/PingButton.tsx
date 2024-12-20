@@ -1,11 +1,9 @@
 'use client'
-
 import { useState } from 'react';
 import { createConnectTransport } from "@connectrpc/connect-web";
 import { createClient } from "@connectrpc/connect";
 import { PingService } from "../gen/src/proto/ping_pb";
 
-// Create transport and client outside component
 const transport = createConnectTransport({
   baseUrl: "http://localhost:8080",
 });
@@ -13,7 +11,7 @@ const transport = createConnectTransport({
 const client = createClient(PingService, transport);
 
 export default function PingButton() {
-  const [message, setMessage] = useState<string>('');
+  const [messages, setMessages] = useState<string[]>([]); // Changed to array
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
@@ -22,10 +20,10 @@ export default function PingButton() {
       const response = await client.ping({
         message: "Hello from frontend!"
       });
-      setMessage(response.message);
+      setMessages(prevMessages => [response.message, ...prevMessages]); // Add to array
     } catch (error) {
       console.error('Error:', error);
-      setMessage('Error connecting to server');
+      setMessages(prevMessages => ['Error connecting to server', ...prevMessages]);
     } finally {
       setIsLoading(false);
     }
@@ -37,16 +35,21 @@ export default function PingButton() {
         type="button"
         onClick={handleClick}
         disabled={isLoading}
-        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+        className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 transition-colors duration-200"
       >
-        Send Ping
+        {isLoading ? 'Sending...' : 'Send Ping'}
       </button>
 
-      {message && (
-        <div className="p-4 bg-gray-100 rounded-md">
-          <p>{message}</p>
-        </div>
-      )}
+      <div className="space-y-2">
+        {messages.map((message, index) => (
+          <div 
+            key={index} 
+            className="p-4 bg-gray-50 rounded-md border border-gray-200 shadow-sm"
+          >
+            <p className="text-gray-700 text-sm">{message}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
