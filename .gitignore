@@ -37,15 +37,14 @@ coverage.out
 debug/
 
 # Kubernetes
-*.yaml
 *.yml
 *.log
 kustomization.yaml
 /.kube/
-secrets/  # Custom directory for secrets
+secrets/
 certs/
 helm-charts/
-!kustomization.yaml  # Include the root kustomization.yaml
+!kustomization.yaml
 .kubeconfig
 
 # NGINX
@@ -61,9 +60,7 @@ nginx.conf
 *.pb.go
 *.pb.gw.go
 *.proto-gen/
-gen/
-client/
-server/
+/gen
 
 # General IDE/Editor
 .idea/
