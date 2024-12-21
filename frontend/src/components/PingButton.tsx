@@ -4,8 +4,10 @@ import { createConnectTransport } from "@connectrpc/connect-web";
 import { createClient } from "@connectrpc/connect";
 import { PingService } from "../gen/src/proto/ping_pb";
 
-const transport = createConnectTransport({
-  baseUrl: "http://localhost:8080",
+// setup baseURL as localhost:8080 or kubernetes secret url
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+]const transport = createConnectTransport({
+  baseUrl: baseUrl,
 });
 
 const client = createClient(PingService, transport);

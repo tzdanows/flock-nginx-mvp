@@ -17,13 +17,13 @@ Milestone 2:
 
 Milestone 3: 
 
-    a. K8S setup
+    a. K8S setup (minikube)
     b. Docker --> K8S
 
 Milestone 4: 
 
     a. nginx setup
-    b. basic k8s testing
+    b. basic k8s testing w/ minikube
     c. potential tailscale testing?
 
 ### Resources

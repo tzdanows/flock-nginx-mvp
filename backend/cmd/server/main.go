@@ -29,15 +29,15 @@ func main() {
 	server := &PingServer{}
 	path, handler := v1connect.NewPingServiceHandler(server)
 
-	// Create a new mux
 	mux := http.NewServeMux()
 
-	// Add CORS middleware
 	corsHandler := func(h http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Access-Control-Allow-Origin", "*")
 			w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-			w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization, Connect-Protocol-Version")
+			w.Header().Set("Access-Control-Allow-Headers",
+				"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, "+
+					"Connect-Protocol-Version, Connect-Timeout-Ms, Grpc-Timeout, X-Grpc-Web, X-User-Agent")
 
 			if r.Method == "OPTIONS" {
 				w.WriteHeader(http.StatusOK)

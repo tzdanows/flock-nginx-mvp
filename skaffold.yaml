@@ -1,0 +1,27 @@
+apiVersion: skaffold/v4beta1
+kind: Config
+metadata:
+  name: ping-app
+build:
+  artifacts:
+    - image: backend
+      context: backend
+      docker:
+        dockerfile: Dockerfile
+    - image: frontend
+      context: frontend
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - k8s/backend/*.yaml
+    - k8s/frontend/*.yaml
+portForward:
+  - resourceType: service
+    resourceName: backend
+    port: 8080
+    localPort: 8080  # available on at :8080
+  - resourceType: service
+    resourceName: frontend
+    port: 3000
+    localPort: 3000 # this will be constantly available at :3000
